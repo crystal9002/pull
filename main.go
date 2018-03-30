@@ -75,11 +75,12 @@ func (app App) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	project := project_arr[0]
+	project := app.Workdir + project_arr[0]
 	branch := branch_arr[0]
 	if exist, _ := IsDir(project); !exist {
 		w.Write([]byte("invalid parameter!"))
 		return
 	}
+
 	w.Write(Pull(app, project, branch))
 }
