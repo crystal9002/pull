@@ -1,0 +1,5 @@
+{
+  "workdir": "/app/web/",
+  "shell": "/app/deploy/deploy.sh",
+  "port": "8888"
+}
