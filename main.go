@@ -51,7 +51,7 @@ func LoadConf() *App {
 }
 
 func Pull(app App, project string, branch string) []byte {
-	cmd := exec.Command(app.Shell, "-c", project, branch)
+	cmd := exec.Command(app.Shell, project, branch)
 	var out bytes.Buffer
 	cmd.Stdout = &out
 	err := cmd.Run()
