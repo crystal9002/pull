@@ -70,13 +70,15 @@ func (app App) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	}
 
 	branch_arr := req.Form["branch"]
+	var branch string
 	if len(branch_arr) < 1 {
-		w.Write([]byte("invalid parameter!"))
-		return
+		branch = ""
+	} else {
+		branch = branch_arr[0]
 	}
 
 	project := app.Workdir + project_arr[0]
-	branch := branch_arr[0]
+
 	if exist, _ := IsDir(project); !exist {
 		w.Write([]byte("invalid parameter!"))
 		return
